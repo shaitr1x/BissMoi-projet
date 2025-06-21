@@ -1,0 +1,297 @@
+/* Palette de couleurs */
+:root {
+  /* 🎨 Couleurs de base */
+  --couleur-fond: #f9f9f9;         /* Fond général très clair, neutre */
+  --couleur-texte: #1a1a1a;        /* Texte principal foncé pour contraste */
+  --couleur-titres: #0f294d;       /* Pour les titres / sections importantes */
+
+  /* 🟡 Couleurs principales */
+  --couleur-primaire: #ffffff;     /* Cartes, conteneurs */
+  --couleur-secondaire: #F3EAEA;   /* Bordures, arrière-plans secondaires */
+
+  /* 🔵 Accent & Identité (ex: liens, détails) */
+  --couleur-accent: #0057A0;       /* Pour les appels à l’action ou détails visuels */
+  --couleur-accent-clair: #d8e8f6; /* Hover léger ou fond d’icône */
+
+  /* 🟢 Boutons */
+  --couleur-bouton-fond: #0070cc;          /* Bleu dynamique pour action principale */
+  --couleur-bouton-hover: #005fa3;         /* Hover plus foncé */
+  --couleur-bouton-texte: #ffffff;         /* Texte sur le bouton */
+
+  /* 🔴 États (Succès, erreur, attention) */
+  --couleur-succes: #28a745;
+  --couleur-erreur: #dc3545;
+  --couleur-warning: #ffc107;
+}
+
+
+
+/* === Bouton slider pour changement de thème === */
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 50px;
+  height: 28px;
+}
+
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  transition: 0.4s;
+  border-radius: 34px;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 22px;
+  width: 22px;
+  left: 3px;
+  bottom: 3px;
+  background-color: white;
+  transition: 0.4s;
+  border-radius: 50%;
+}
+
+/* ✅ Quand le checkbox est activé (dark mode) */
+input:checked + .slider {
+  background-color: #2196F3;
+}
+
+input:checked + .slider:before {
+  transform: translateX(22px);
+}
+
+/* Réinitialisation de base */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: var(--couleur-fond);
+  color: var(--couleur-texte);
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  line-height: 1.6;
+}
+
+/* En-tête */
+header {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: #f4f4f4;
+    border-bottom: 1px solid #ccc;
+}
+
+.user-info {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.user-icon {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+}
+
+.user-name {
+    font-weight: bold;
+    font-size: 16px;
+    color: #333;
+}
+
+.logo {
+  font-size: 1.8rem;
+  font-weight: bold;
+  color: var(--couleur-accent);
+}
+
+.search-bar {
+  display: flex;
+  align-items: center;
+}
+
+.search-bar input {
+  padding: 0.5rem;
+  border: none;
+  border-radius: 4px 0 0 4px;
+  outline: none;
+}
+
+.search-bar button {
+  padding: 0.5rem;
+  border: none;
+  background-color: var(--couleur-accent);
+  color: var(--couleur-bouton-texte);
+  border-radius: 0 4px 4px 0;
+  cursor: pointer;
+}
+
+.user-actions a {
+  margin-left: 1rem;
+  color: var(--couleur-texte);
+  text-decoration: none;
+}
+
+.user-actions a:hover {
+  text-decoration: underline;
+}
+
+/* Bannière principale */
+.hero {
+  background-color: var(--couleur-secondaire);
+  background-size: cover;
+  background-position: center;
+  text-align: center;
+  padding: 4rem 2rem;
+}
+
+
+.hero h1 {
+    font-family: lobster;
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+}
+
+.hero p {
+  font-size: 1.2rem;
+}
+
+
+/*categories*/
+.main-nav {
+         text-align: center;
+  margin-bottom: 2rem;
+}
+.main-nav a {
+    text-decoration: none;
+    font-family: lobster;
+    color: rgb(0, 0, 0);
+    padding: 0.5rem;
+    font-size: 20px;
+    transition: font-size 0.3s ease;
+}
+
+.main-nav a:hover {
+  border-bottom: 2px solid var(--couleur-accent);
+  font-size: 30px;
+}
+
+.categories-section {
+  padding: 2rem;
+  background-color: var(--couleur-secondaire);
+}
+
+.categories-section h2 {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.categories-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1.5rem;
+}
+
+.category-card {
+  background-color: var(--couleur-primaire);
+  padding: 1rem;
+  border-radius: 8px;
+  text-align: center;
+  transition: transform 0.2s ease;
+}
+
+.category-card:hover {
+  transform: translateY(-5px);
+}
+
+.category-card img {
+  max-width: 100%;
+  height: 120px;
+  object-fit: cover;
+  border-radius: 4px;
+  margin-bottom: 1rem;
+}
+
+.category-card h3 {
+  color: var(--couleur-texte);
+}
+
+.categories-section {
+     text-align: center;
+  margin-bottom: 2rem;
+}
+
+/* Produits en vedette */
+.featured-products {
+  padding: 2rem;
+}
+
+.featured-products h2 {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2rem;
+}
+
+.product-card {
+  background-color: var(--couleur-primaire);
+  padding: 1rem;
+  border-radius: 8px;
+  text-align: center;
+}
+
+.product-card img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 4px;
+}
+
+.product-card h3 {
+  margin: 1rem 0 0.5rem;
+}
+
+.product-card p {
+  margin-bottom: 1rem;
+}
+
+.product-card button {
+  background-color: var(--couleur-bouton-fond);
+  color: var(--couleur-bouton-texte);
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.product-card button:hover {
+  background-color: var(--couleur-bouton-hover);
+}
+
+/* Pied de page */
+footer {
+  background-color: var(--couleur-primaire);
+  text-align: center;
+  padding: 1rem;
+  margin-top: 2rem;
+}
+

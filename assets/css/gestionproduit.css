@@ -1,0 +1,96 @@
+    :root {
+  /* 🎨 Couleurs de base */
+  --couleur-fond: #171616;         /* Fond général très clair, neutre */
+  --couleur-texte: #FFFFFF;        /* Texte principal foncé pour contraste */
+  --couleur-titres: #FF9900;       /* Pour les titres / sections importantes */
+
+  /* 🟡 Couleurs principales */
+  --couleur-primaire: #3E3B3B;     /* Cartes, conteneurs */
+  --couleur-secondaire: #615C5C;   /* Bordures, arrière-plans secondaires */
+
+  /* 🔵 Accent & Identité (ex: liens, détails) */
+  --couleur-accent: #FF9900;       /* Pour les appels à l’action ou détails visuels */
+  --couleur-accent-clair: #d8e8f6; /* Hover léger ou fond d’icône */
+
+  /* 🟢 Boutons */
+  --couleur-bouton-fond: #FF9900;          /* Bleu dynamique pour action principale */
+  --couleur-bouton-hover: #b77512;         /* Hover plus foncé */
+  --couleur-bouton-texte: #000000;         /* Texte sur le bouton */
+
+  /* 🔴 États (Succès, erreur, attention) */
+  --couleur-succes: #28a745;
+  --couleur-erreur: #dc3545;
+  --couleur-warning: #ffc107;
+}
+    body {
+        background-color: var(--couleur-fond);
+    }
+    .container {
+      max-width: 1300px;
+      margin: auto;
+      padding: 2rem;
+      background-color: var(--couleur-primaire);
+      border-radius: 10px;
+      box-shadow: 0 0 15px rgba(0, 0, 0, 0.4);
+      color: var(--couleur-texte);
+    }
+
+    h1 {
+      color: var(--couleur-titres);
+      margin-bottom: 1rem;
+      text-align: center;
+    }
+
+    .product-table {
+      width: 1300px;
+      border-collapse: collapse;
+      margin-bottom: 2rem;
+    }
+
+    .product-table th, .product-table td {
+      padding: 0.75rem;
+      text-align: left;
+      border-bottom: 1px solid var(--couleur-secondaire);
+    }
+
+    .product-table th {
+      background-color: var(--couleur-secondaire);
+      color: var(--couleur-titres);
+    }
+
+    .product-table td img {
+      width: 60px;
+      height: auto;
+      border-radius: 5px;
+    }
+
+    .actions button {
+      background-color: var(--couleur-bouton-fond);
+      color: var(--couleur-bouton-texte);
+      border: none;
+      padding: 6px 12px;
+      margin-right: 5px;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    .actions button:hover {
+      background-color: var(--couleur-bouton-hover);
+    }
+
+    .add-product {
+      margin-bottom: 1.5rem;
+      text-align: right;
+    }
+
+    .add-product a {
+      background-color: var(--couleur-accent);
+      color: var(--couleur-bouton-texte);
+      padding: 10px 15px;
+      border-radius: 5px;
+      text-decoration: none;
+    }
+
+    .add-product a:hover {
+      background-color: var(--couleur-bouton-hover);
+    }
