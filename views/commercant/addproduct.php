@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <title>Ajouter un Produit</title>
   <link rel="stylesheet" href="<?= BASE_URL ?>//assets/css/add.css">
+  <link rel="icon" href="<?= BASE_URL ?>assets/images/favicon.ico" type="image/png">
 </head>
 <body>
   <div class="form-container">

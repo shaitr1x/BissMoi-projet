@@ -7,6 +7,7 @@
 <head>
   <meta charset="UTF-8">
   <title>Dashboard Commerçant - BissMoi</title>
+  <link rel="icon" href="<?= BASE_URL ?>assets/images/favicon.ico" type="image/png">
   <link rel="stylesheet" href="<?= BASE_URL ?>//assets/css/dark.css"> <!-- ton fichier CSS -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-..." crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>

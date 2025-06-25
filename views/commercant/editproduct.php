@@ -8,6 +8,7 @@ if (session_status() === PHP_SESSION_NONE) {
 <head>
   <meta charset="UTF-8">
   <title>Modifier un Produit</title>
+  <link rel="icon" href="<?= BASE_URL ?>assets/images/favicon.ico" type="image/png">
   <style>
     body {
       font-family: Arial, sans-serif;

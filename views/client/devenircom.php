@@ -7,6 +7,7 @@ $userId = $_SESSION['user']['id'] ?? '';
 <!DOCTYPE html>
 <html lang="fr">
 <head>
+  <link rel="icon" href="<?= BASE_URL ?>assets/images/favicon.ico" type="image/png">
   <meta charset="UTF-8">
   <title>Devenir Commerçant - BissMoi</title>
   <style>

@@ -1,10 +1,12 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
+  <link rel="icon" href="<?= BASE_URL ?>assets/images/favicon.ico" type="image/png">
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>BissMoi - Accueil</title>
   <link id="theme-link" rel="stylesheet" href="<?= BASE_URL ?>//assets/css/dark.css">
+  <link rel="stylesheet" href="<?= BASE_URL ?>assets/css/product.css">
   <!-- Icônes Font Awesome -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-..." crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
@@ -13,25 +15,7 @@
     <?php if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }?>
-  <header>
-    <div class="logo">BissMoi</div>
-    <div class="search-bar">
-     <form action="recherche.php" method="GET">
-    <input type="text" name="q" placeholder="Rechercher un produit...">
-    <button type="submit"><i class="fas fa-search"></i></button>
-    </form>
-    </div>
-    <div class="user-actions">
-      <a href="index.php?controller=user&action=logout">Se déconnecter</a>
-      <a href="index.php?controller=user&action=updaterole" >devenir commercant</a>
-  <img src="https://cdn-icons-png.flaticon.com/512/1144/1144760.png" alt="User Icon" class="user-icon">
-  
-     <span class="user-name">
-     <?php echo $_SESSION['user']['name']; ?>
-      </span>   
-      <a href="#"><i class="fas fa-shopping-cart"></i> Panier</a>
-    </div>
-  </header>
+<?php include 'views/includes/header_client.php'; ?>
   <!-- Bannière principale -->
   <section class="hero">
     <h1>Bienvenue sur BissMoi</h1>
@@ -89,9 +73,7 @@
   </section>
 
   <!-- Pied de page -->
-  <footer>
-    <p>&copy; 2025 BissMoi. Tous droits réservés.</p>
-  </footer>
+<?php include 'views/includes/footer.php'; ?>
     <!-- Script JS -->
   <script src="../assets/js/connexion.js"></script>
   <script src="../assets/js/theme.js"></script>

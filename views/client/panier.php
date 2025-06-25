@@ -2,6 +2,7 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
+  <link rel="icon" href="<?= BASE_URL ?>assets/images/favicon.ico" type="image/png">
   <meta charset="UTF-8">
   <title>Mon Panier - BissMoi</title>
   <link rel="stylesheet" href="<?= BASE_URL ?>//assets/css/dark.css">

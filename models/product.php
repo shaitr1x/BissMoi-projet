@@ -159,7 +159,7 @@ public function update($id, $nom, $description, $prix, $stock, $image, $categori
     ]);
 }
 //produit populaire
-public static function getPopular($limit = 4) {
+public static function getPopular($limit = 5) {
     $con = connexion::connect();
     $sql = "SELECT * FROM produits ORDER BY id_produit DESC LIMIT :limit";
     $stmt = $con->prepare($sql);
