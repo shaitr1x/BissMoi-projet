@@ -1,0 +1,128 @@
+:root {
+  /* 🎨 Couleurs de base */
+  --couleur-fond: #171616;         /* Fond général très clair, neutre */
+  --couleur-texte: #FFFFFF;        /* Texte principal foncé pour contraste */
+  --couleur-titres: #00b894;       /* Pour les titres / sections importantes */
+
+  /* 🟡 Couleurs principales */
+  --couleur-primaire: #3E3B3B;     /* Cartes, conteneurs */
+  --couleur-secondaire: #615C5C;   /* Bordures, arrière-plans secondaires */
+
+  /* 🔵 Accent & Identité (ex: liens, détails) */
+  --couleur-accent: #00b894;       /* Pour les appels à l’action ou détails visuels */
+  --couleur-accent-clair: #d8e8f6; /* Hover léger ou fond d’icône */
+
+  /* 🟢 Boutons */
+  --couleur-bouton-fond: #00b894;          /* Bleu dynamique pour action principale */
+  --couleur-bouton-hover: #098c6e;         /* Hover plus foncé */
+  --couleur-bouton-texte: #000000;         /* Texte sur le bouton */
+
+  /* 🔴 États (Succès, erreur, attention) */
+  --couleur-succes: #28a745;
+  --couleur-erreur: #dc3545;
+  --couleur-warning: #ffc107;
+}
+ body {
+        background-color: var(--couleur-fond);
+    }
+.form-container {
+      max-width: 600px;
+      margin: auto;
+      background-color: var(--couleur-primaire);
+      padding: 2rem;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.5);
+      color: var(--couleur-texte);
+    }
+
+    h2 {
+      text-align: center;
+      margin-bottom: 1.5rem;
+      color: var(--couleur-titres);
+    }
+
+    label {
+      display: block;
+      margin: 1rem 0 0.5rem;
+    }
+
+    input[type="text"],
+    input[type="number"],
+    input[type="file"],
+    select,
+    textarea {
+      width: 100%;
+      padding: 10px;
+      border-radius: 5px;
+      border: none;
+      background-color: var(--couleur-secondaire);
+      color: var(--couleur-texte);
+    }
+
+    textarea {
+      resize: vertical;
+    }
+
+    button {
+      margin-top: 1.5rem;
+      background-color: var(--couleur-bouton-fond);
+      color: var(--couleur-bouton-texte);
+      border: none;
+      padding: 10px 20px;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: var(--couleur-bouton-hover);
+    }
+    .circle-upload-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
+    font-family: sans-serif;
+}
+
+.circle-upload {
+    width: 50px;
+    height: 50px;
+    background-color: #e4e6eb;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    border: 2px solid #ccc;
+    transition: background-color 0.3s, border-color 0.3s;
+}
+
+.circle-upload:hover {
+    background-color: #d8dadf;
+    border-color: #1877f2; /* Facebook blue */
+}
+
+.circle-upload .icon {
+    font-size: 32px;
+    color: #555;
+}
+
+.upload-note {
+    font-size: 12px;
+    color: #666;
+}
+
+#file-count {
+    font-size: 13px;
+    color: #333;
+}
+
+@media (max-width: 700px) {
+  .form-container {
+    padding: 1rem 0.3rem;
+    max-width: 98vw;
+  }
+  h2 {
+    font-size: 1.3rem;
+  }
+}

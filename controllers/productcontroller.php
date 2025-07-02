@@ -24,7 +24,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     $imagePaths = []; // Tableau qui contiendra les chemins des images enregistrées
 
-    $allowed = ['jpg', 'jpeg', 'png', 'gif'];
+    $allowed = ['jpg', 'jpeg', 'png', 'gif','webp'];
     $uploadDir = 'uploads/';
 
     if (!is_dir($uploadDir)) {
@@ -55,7 +55,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         }
     }
 
-    // 👉 Ici tu peux choisir d'enregistrer le premier ou tous les chemins (ex. JSON)
+    // Ici tu peux choisir d'enregistrer le premier ou tous les chemins (ex. JSON)
     $imageString = json_encode($imagePaths); // Enregistre comme texte JSON
     // Si tu préfères uniquement la première :
     // $imageString = $imagePaths[0] ?? '';

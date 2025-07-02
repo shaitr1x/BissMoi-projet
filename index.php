@@ -1,7 +1,8 @@
 <?php
+
 require_once __DIR__.'/config/configcss.php';
 $controller = $_GET['controller'] ?? 'user';
-$action = $_GET['action'] ?? 'acceuil';
+$action = $_GET['action'] ?? 'accueil';
 
 require_once __DIR__ . "/controllers/{$controller}controller.php";
 $controllerClass = $controller . "controller";

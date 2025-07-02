@@ -10,6 +10,8 @@ class User {
     private $role;
     private $status;
     private $created_at;
+    private $updated_at;
+
 
     public function __construct($id = null, $name = "", $password = "", $email = "", $phone = "", $role = "") {
         $this->id = $id;
@@ -62,7 +64,6 @@ class User {
 public function register($name, $email, $password) {
     $con = connexion::connect();
 
-    //  Hachage du mot de passe
     $passwordHash = password_hash($password, PASSWORD_DEFAULT);
 
     $stmt = $con->prepare("INSERT INTO users (name, email, password) 

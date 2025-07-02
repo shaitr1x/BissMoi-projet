@@ -10,25 +10,25 @@ class usercontroller {
    public static function dashboardclient()
 {
     $produitsPopulaires = Produit::getPopular();
-    require_once __DIR__ . '/../views/client/dashbordclient.php';
+    require_once __DIR__ . '/../views/client/dashboardclient.php';
 }
 
-    public static function acceuil() {
+    public static function accueil() {
     $produitsPopulaires = Produit::getPopular();
-        require_once __DIR__ . '/../views/acceuil.php';
+        require_once __DIR__ . '/../views/accueil.php';
     }
-    public static function dashbordcommercant()
+    public static function dashboardcommercant()
     {
          if (session_status() === PHP_SESSION_NONE) session_start();
     $id_commercant = $_SESSION['user']['id'];
     $produits = Produit::getPopularbycommercant(4,$id_commercant);
-    require_once __DIR__ . '/../views/commercant/dashbordcommercant.php';
+    require_once __DIR__ . '/../views/commercant/dashboardcommercant.php';
     }
      public static function dashboardadmin()
     {
          require_once __DIR__ . '/../views/admin/dashboardadmin.php';
     }
-    public static function gestionproduit()
+    public static function gestionProduit()
     {   
          $id_commercant = $_SESSION['user']['id'];
          $produits = Produit::getAllByMerchant($id_commercant);
@@ -36,7 +36,7 @@ class usercontroller {
     }
 
 
-    public static function gestionproduct() {
+    public static function gestionProduct() {
     $produits = Produit::getAll(); // Récupération des produits de la BDD
     require_once __DIR__ . '/../views/commercant/gestion_de_produits.php';
 }
@@ -71,7 +71,7 @@ class usercontroller {
         break;
 
     case 'merchant':
-        header('Location: index.php?controller=user&action=dashbordcommercant');
+        header('Location: index.php?controller=user&action=dashboardcommercant');
         break;
 
     default:
@@ -118,7 +118,7 @@ public static function updaterole() {
         if ($success) {
             $_SESSION['user']['role'] = 'merchant';
 
-            header('Location: index.php?controller=user&action=dashbordcommercant');
+            header('Location: index.php?controller=user&action=dashboardcommercant');
             exit;           
         } else {
             echo "Erreur lors de la mise à jour du rôle.";
@@ -135,7 +135,7 @@ public static function updaterole() {
     session_start();
     $_SESSION = [];
     session_destroy();
-    header('Location: index.php?controller=user&action=acceuil');
+    header('Location: index.php?controller=user&action=accueil');
     exit;
 }
 

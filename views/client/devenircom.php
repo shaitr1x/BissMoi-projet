@@ -10,6 +10,7 @@ $userId = $_SESSION['user']['id'] ?? '';
   <link rel="icon" href="<?= BASE_URL ?>assets/images/favicon.ico" type="image/png">
   <meta charset="UTF-8">
   <title>Devenir Commerçant - BissMoi</title>
+  <link rel="stylesheet" href="<?= BASE_URL ?>assets/css/public/modern-ui.css">
   <style>
     body {
       font-family: Arial, sans-serif;

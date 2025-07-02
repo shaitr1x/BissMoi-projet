@@ -60,41 +60,23 @@ class produit {
     }
 
     // --- SETTERS ---
-    public function setId($id) {
-        $this->id = $id;
-    }
+    public function setId($id) {$this->id = $id;}
 
-    public function setIdCommercant($id_commercant) {
-        $this->id_commercant = $id_commercant;
-    }
+    public function setIdCommercant($id_commercant) {$this->id_commercant = $id_commercant;}
 
-    public function setNom($nom) {
-        $this->nom = $nom;
-    }
+    public function setNom($nom) {$this->nom = $nom;}
 
-    public function setDescription($description) {
-        $this->description = $description;
-    }
+    public function setDescription($description) {$this->description = $description;}
 
-    public function setPrix($prix) {
-        $this->prix = $prix;
-    }
+    public function setPrix($prix) {$this->prix = $prix;}
 
-    public function setStock($stock) {
-        $this->stock = $stock;
-    }
+    public function setStock($stock) {$this->stock = $stock;}
 
-    public function setImage($image) {
-        $this->image = $image;
-    }
+    public function setImage($image) {$this->image = $image;}
 
-    public function setCategorie($categorie) {
-        $this->categorie = $categorie;
-    }
+    public function setCategorie($categorie) {$this->categorie = $categorie;}
 
-    public function setDateAjout($date_ajout) {
-        $this->date_ajout = $date_ajout;
-    }
+    public function setDateAjout($date_ajout) {$this->date_ajout = $date_ajout; }
 
     //add produit
 
@@ -137,7 +119,7 @@ public function delete($id) {
     return $stmt->execute(['id' => $id]);
 }
 
-//edit produit
+//recupérer un produit avec id
 public static function getById($id) {
     $con = connexion::connect();
     $stmt = $con->prepare("SELECT * FROM produits WHERE id_produit = :id");

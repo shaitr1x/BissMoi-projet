@@ -1,128 +1,99 @@
-<?php session_start(); ?>
+<?php  if (session_status() === PHP_SESSION_NONE) {
+        session_start();
+    } ?>
 <!DOCTYPE html>
 <html lang="fr">
 <head>
   <link rel="icon" href="<?= BASE_URL ?>assets/images/favicon.ico" type="image/png">
   <meta charset="UTF-8">
   <title>Mon Panier - BissMoi</title>
-  <link rel="stylesheet" href="<?= BASE_URL ?>//assets/css/dark.css">
-  <style>
-    .cart-container {
-      max-width: 1000px;
-      margin: 2rem auto;
-      background-color: var(--couleur-primaire);
-      padding: 2rem;
-      border-radius: 8px;
+  <link rel="stylesheet" href="<?= BASE_URL ?>//assets/css/public/dark.css">
+  <link rel="stylesheet" href="<?= BASE_URL ?>//assets/css/public/panier.css">
+  <link rel="stylesheet" href="<?= BASE_URL ?>assets/css/public/modern-ui.css">
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-..." crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <script>
+    function toggleAddressField() {
+      const typeLivraison = document.getElementById('livraison').value;
+      const adresseField = document.getElementById('adresse-container');
+      adresseField.style.display = typeLivraison === 'domicile' ? 'block' : 'none';
     }
-
-    .cart-title {
-      text-align: center;
-      font-size: 2rem;
-      color: var(--couleur-titres);
-      margin-bottom: 1.5rem;
-    }
-
-    .cart-item {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      background-color: var(--couleur-secondaire);
-      padding: 1rem;
-      margin-bottom: 1rem;
-      border-radius: 6px;
-    }
-
-    .cart-item img {
-      width: 80px;
-      height: 80px;
-      object-fit: cover;
-      border-radius: 6px;
-    }
-
-    .item-info {
-      flex: 1;
-      margin-left: 1rem;
-    }
-
-    .item-info h3 {
-      margin-bottom: 0.5rem;
-    }
-
-    .item-price {
-      font-weight: bold;
-      color: var(--couleur-accent);
-    }
-
-    .remove-btn {
-      background-color: var(--couleur-erreur);
-      border: none;
-      color: white;
-      padding: 0.4rem 0.8rem;
-      border-radius: 4px;
-      cursor: pointer;
-    }
-
-    .cart-summary {
-      text-align: right;
-      margin-top: 2rem;
-    }
-
-    .total {
-      font-size: 1.2rem;
-      font-weight: bold;
-      color: var(--couleur-accent);
-    }
-
-    .checkout-btn {
-      background-color: var(--couleur-bouton-fond);
-      color: var(--couleur-bouton-texte);
-      padding: 0.7rem 1.2rem;
-      border: none;
-      border-radius: 6px;
-      cursor: pointer;
-      margin-top: 1rem;
-      font-weight: bold;
-    }
-
-    .checkout-btn:hover {
-      background-color: var(--couleur-bouton-hover);
-    }
-  </style>
+  </script>
 </head>
 <body>
-
-  <header>
-    <div class="logo">🛒 BissMoi</div>
-    <div class="user-actions">
-      <span class="user-name">Bonjour, <?= $_SESSION['user']['name'] ?? 'Visiteur' ?></span>
-      <a href="index.php?controller=user&action=logout">Déconnexion</a>
+<?php include 'views/includes/header_client.php'; ?>
+<div class="main-content">
+  <div class="cart-box">
+    <h2>🛒 Votre Panier</h2>
+    <?php if (empty($produit)): ?>
+      <p>Votre panier est vide.</p>
+    <?php else: ?>
+      <?php foreach ($produit as $prod): ?>
+  <div class="cart-item">
+    <img src="<?= $prod['image'] ? json_decode($prod['image'])[0] : 'default.jpg' ?>" width="80">
+    <div style="flex:1;min-width:120px;">
+      <strong><?= htmlspecialchars($prod['nom']) ?></strong>
+      <div>Prix : <?= number_format($prod['prix'], 2) ?> TND</div>
+      <div>Quantité : <?= $prod['qty'] ?></div>
+      <div>Sous-total : <?= number_format($prod['total'], 2) ?> TND</div>
     </div>
-  </header>
-
-  <div class="cart-container">
-    <div class="cart-title">🛍️ Votre Panier</div>
-
-    <!-- Exemple d'article -->
-    <div class="cart-item">
-      <img src="https://source.unsplash.com/100x100/?product" alt="Produit">
-      <div class="item-info">
-        <h3>Nom du produit</h3>
-        <div class="item-price">49.99 TND</div>
-      </div>
-      <button class="remove-btn">❌ Retirer</button>
-    </div>
-
-    <!-- Répéter pour chaque produit -->
-
-    <div class="cart-summary">
-      <p class="total">Total : 149.97 TND</p>
-      <button class="checkout-btn">✅ Valider la commande</button>
+    <div>
+      <?php if (!empty($prod['id_produit'])): ?>
+        <form action="index.php?controller=cart&action=dropcard&id=<?= htmlspecialchars($prod['id_produit']) ?>" method="post" style="display:inline;">
+          <button type="submit" onclick="return confirm('Supprimer ce produit ?');" style="background-color: var(--couleur-erreur); color: white;">🗑️ Supprimer</button>
+        </form>
+      <?php else: ?>
+        <span style="color: var(--couleur-erreur); font-size:0.9em;">Erreur : ID produit manquant</span>
+      <?php endif; ?>
     </div>
   </div>
-
-  <footer>
-    <p>&copy; <?= date("Y") ?> BissMoi - Tous droits réservés</p>
-  </footer>
-
+<?php endforeach; ?>
+      <hr>
+      <h3>📦 Informations de commande</h3>
+      <form action="index.php?controller=cart&action=commander" method="post" id="checkout-form">
+        <label for="phone">📱 Numéro de téléphone :</label><br>
+        <input type="text" name="phone" id="phone" required><br><br>
+        <label for="livraison">🚚 Mode de livraison :</label><br>
+        <select name="livraison" id="livraison" required onchange="toggleAdresse()">
+          <option value="">-- Choisir --</option>
+          <option value="point_retrait">📦 Retrait en point</option>
+          <option value="domicile">🏠 Livraison à domicile</option>
+        </select><br><br>
+        <div id="adresse-block" style="display: none;">
+          <label for="adresse">🏠 Adresse de livraison :</label><br>
+          <textarea name="adresse" id="adresse" rows="3" placeholder="Ex : 12 Rue de Paris, Tunis"></textarea><br><br>
+        </div>
+        <button type="submit" class="checkout-btn">✅ Confirmer la commande</button>
+      </form>
+      <script>
+        function toggleAdresse() {
+          const type = document.getElementById("livraison").value;
+          const block = document.getElementById("adresse-block");
+          block.style.display = (type === "domicile") ? "block" : "none";
+        }
+      </script>
+      <p class="total">💰 Total : <?= number_format($total, 2) ?> TND</p>
+    <?php endif; ?>
+  </div>
+  <div class="sidebar">
+    <h3>Derniers articles vus</h3>
+    <div class="product">
+      <img src="https://m.media-amazon.com/images/I/71Y3aJc8ZlL._AC_SY355_.jpg" alt="Produit 1">
+      <div class="product-details">
+        <h4>Laptop XYZ Pro</h4>
+        <div>249,00€ <span>-17%</span></div>
+        <button>Ajouter au panier</button>
+      </div>
+    </div>
+    <div class="product">
+      <img src="https://m.media-amazon.com/images/I/61CcfzxrYeL._AC_SY355_.jpg" alt="Produit 2">
+      <div class="product-details">
+        <h4>Playstation 5</h4>
+        <div>666,12€</div>
+        <button>Ajouter au panier</button>
+      </div>
+    </div>
+  </div>
+</div>
+<?php include 'views/includes/footer.php'; ?>
 </body>
 </html>

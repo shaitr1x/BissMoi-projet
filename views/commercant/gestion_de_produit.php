@@ -5,7 +5,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="<?= BASE_URL ?>//assets/css/gestionproduit.css">
+    <link rel="stylesheet" href="<?= BASE_URL ?>//assets/css/commercant/gestionproduit.css">
+    <link rel="stylesheet" href="<?= BASE_URL ?>assets/css/public/modern-ui.css">
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-..." crossorigin="anonymous" referrerpolicy="no-referrer" />
     <style>
 /* ✅ Overlay pour l’image agrandie */
 .lightbox {
@@ -32,6 +34,8 @@
 </style>
 
 </head>
+<!-- header -->
+<?php include 'views/includes/header_commercant.php'; ?><br><br><br><br>
 <body>
   <div class="container">
     <h1>📦 Gestion des Produits</h1>
